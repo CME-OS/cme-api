@@ -64,5 +64,8 @@ abstract class AbstractController implements IController
 
   abstract protected function _process(Request $request);
 
-  abstract public function requiresAccessToken();
+  public function requiresAccessToken()
+  {
+    return true;
+  }
 }
