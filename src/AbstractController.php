@@ -31,6 +31,7 @@ abstract class AbstractController implements IController
       }
       else
       {
+        $result['request'] = $request->post();
         $result['status'] = 'fail';
         $result['error']  = "Invalid Client ID";
       }
