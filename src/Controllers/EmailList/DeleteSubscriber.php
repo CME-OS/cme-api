@@ -41,9 +41,4 @@ class DeleteSubscriber extends AbstractController
 
     return $result;
   }
-
-  public function requiresAccessToken()
-  {
-    return false;
-  }
 }

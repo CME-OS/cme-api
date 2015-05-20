@@ -52,9 +52,4 @@ class AddSubscriber extends AbstractController
 
     return $result;
   }
-
-  public function requiresAccessToken()
-  {
-    return true;
-  }
 }
