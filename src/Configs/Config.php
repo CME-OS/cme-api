@@ -8,10 +8,16 @@ class Config
 {
   private static $_config;
 
-  public static function get($group, $item)
+  public static function get($group, $item = null)
   {
     self::loadConfig();
-    return self::$_config[$group][$item];
+    $return = idx(self::$_config, $group);
+    if($item !== null)
+    {
+      $return = idx(self::$_config[$group], $item);
+    }
+
+    return $return;
   }
 
   public static function getRoutes()
