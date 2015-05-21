@@ -46,7 +46,7 @@ if($app->request->isPost())
         $response->headers->set('Content-Type', 'application/json');
 
         $return['status']  = 'error';
-        $return['message'] = 'Unsupported Call';
+        $return['error'] = 'Unsupported Call';
         $return['request'] = $app->request->post();
 
         $response->setBody(json_encode($return));
@@ -64,7 +64,7 @@ else
       $response->headers->set('Content-Type', 'application/json');
 
       $return['status']  = 'error';
-      $return['message'] = 'This API only supports POST method';
+      $return['error'] = 'This API only supports POST method';
       $return['request'] = $app->request->params();
 
       $response->setBody(json_encode($return));
