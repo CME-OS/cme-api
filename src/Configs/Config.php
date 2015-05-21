@@ -33,6 +33,12 @@ class Config
         'list/get_subscriber'    => 'CmeApi\\Controllers\\EmailList\\GetSubscriber',
         'list/get_subscribers'   => 'CmeApi\\Controllers\\EmailList\\GetSubscribers',
         'list/get_campaigns'     => 'CmeApi\\Controllers\\EmailList\\GetCampaigns',
+        'campaign/all'           => 'CmeApi\\Controllers\\Campaign\\All',
+        'campaign/get'           => 'CmeApi\\Controllers\\Campaign\\Get',
+        'campaign/exists'        => 'CmeApi\\Controllers\\Campaign\\Exists',
+        'campaign/create'        => 'CmeApi\\Controllers\\Campaign\\Create',
+        'campaign/update'        => 'CmeApi\\Controllers\\Campaign\\Update',
+        'campaign/delete'        => 'CmeApi\\Controllers\\Campaign\\Delete',
       ]
     ];
 

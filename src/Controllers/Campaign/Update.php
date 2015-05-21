@@ -10,7 +10,7 @@ use CmeData\CampaignData;
 use CmeKernel\Core\CmeKernel;
 use Slim\Http\Request;
 
-class Create extends AbstractController
+class Update extends AbstractController
 {
   public function _process(Request $request)
   {
@@ -20,19 +20,18 @@ class Create extends AbstractController
     try
     {
       $data = CampaignData::hydrate($request->post());
-      if($data->name)
+      if($data->id)
       {
-        $campaignId = CmeKernel::Campaign()->create($data);
+        $result['result'] = CmeKernel::Campaign()->update($data);
       }
       else
       {
         throw new \Exception(
-          "Campaign is missing a name. A name is required to create a campaign"
+          "Campaign ID is missing a name. An id is required to create a list"
         );
       }
 
-      $result['result']  = ['campaignId' => $campaignId];
-      $result['message'] = 'Campaign successfully created.';
+      $result['message'] = 'Campaign successfully updated.';
     }
     catch(\Exception $e)
     {
