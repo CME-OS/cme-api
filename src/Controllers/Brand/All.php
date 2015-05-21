@@ -6,11 +6,10 @@
 namespace CmeApi\Controllers\Brand;
 
 use CmeApi\AbstractController;
-use CmeData\BrandData;
 use CmeKernel\Core\CmeKernel;
 use Slim\Http\Request;
 
-class Create extends AbstractController
+class All extends AbstractController
 {
   public function _process(Request $request)
   {
@@ -19,20 +18,11 @@ class Create extends AbstractController
     $result['request'] = $request->post();
     try
     {
-      $data = BrandData::hydrate($request->post());
-      if($data->brandName)
-      {
-        $brandId = CmeKernel::Brand()->create($data);
-      }
-      else
-      {
-        throw new \Exception(
-          "Brand is missing a name. A name is required to create a brand"
-        );
-      }
-
-      $result['result']  = ['brandId' => $brandId];
-      $result['message'] = 'Brand successfully created.';
+      $includeDeleted           = $request->post('include_deleted');
+      $result['data']['brands'] = CmeKernel::Brand()->all(
+        $includeDeleted
+      );
+      $result['message']        = 'All campaigns returned.';
     }
     catch(\Exception $e)
     {

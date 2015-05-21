@@ -39,6 +39,12 @@ class Config
         'campaign/create'        => 'CmeApi\\Controllers\\Campaign\\Create',
         'campaign/update'        => 'CmeApi\\Controllers\\Campaign\\Update',
         'campaign/delete'        => 'CmeApi\\Controllers\\Campaign\\Delete',
+        'brand/all'              => 'CmeApi\\Controllers\\Brand\\All',
+        'brand/get'              => 'CmeApi\\Controllers\\Brand\\Get',
+        'brand/exists'           => 'CmeApi\\Controllers\\Brand\\Exists',
+        'brand/create'           => 'CmeApi\\Controllers\\Brand\\Create',
+        'brand/update'           => 'CmeApi\\Controllers\\Brand\\Update',
+        'brand/delete'           => 'CmeApi\\Controllers\\Brand\\Delete',
       ]
     ];
 
