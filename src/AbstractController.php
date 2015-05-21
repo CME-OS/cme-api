@@ -33,7 +33,7 @@ abstract class AbstractController implements IController
       {
         $result['request'] = $request->post();
         $result['status'] = 'fail';
-        $result['error']  = "Invalid Client ID";
+        $result['error']  = "Invalid Client Key";
       }
     }
     else

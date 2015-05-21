@@ -39,7 +39,7 @@ class GetSubscriber extends AbstractController
     catch(\Exception $e)
     {
       $result['status']  = 'fail';
-      $result['message'] = $e->getMessage();
+      $result['error'] = $e->getMessage();
     }
 
     return $result;
