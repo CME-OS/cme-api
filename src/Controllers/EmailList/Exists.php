@@ -39,9 +39,4 @@ class Exists extends AbstractController
 
     return $result;
   }
-
-  public function requiresAccessToken()
-  {
-    return false;
-  }
 }
