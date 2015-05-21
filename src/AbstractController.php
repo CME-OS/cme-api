@@ -32,8 +32,8 @@ abstract class AbstractController implements IController
       else
       {
         $result['request'] = $request->post();
-        $result['status'] = 'fail';
-        $result['error']  = "Invalid Client Key";
+        $result['status']  = 'fail';
+        $result['error']   = "Invalid Credentials. Check that your key and secret are correct";
       }
     }
     else
@@ -67,6 +67,6 @@ abstract class AbstractController implements IController
 
   public function requiresAccessToken()
   {
-    return true;
+    return false;
   }
 }
