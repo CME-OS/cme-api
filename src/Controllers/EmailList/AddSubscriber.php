@@ -6,9 +6,8 @@
 namespace CmeApi\Controllers\EmailList;
 
 use CmeApi\AbstractController;
-use CmeKernel\Core\CmeDatabase;
+use CmeData\SubscriberData;
 use CmeKernel\Core\CmeKernel;
-use CmeKernel\Data\SubscriberData;
 use Slim\Http\Request;
 
 class AddSubscriber extends AbstractController
@@ -31,7 +30,7 @@ class AddSubscriber extends AbstractController
       /**
        * @var SubscriberData $data
        */
-      $data = CmeDatabase::hydrate(new SubscriberData(), $post, false);
+      $data = SubscriberData::hydrate($post, false);
       if($listId)
       {
         $result['result'] = CmeKernel::EmailList()->addSubscriber(
