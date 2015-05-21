@@ -6,8 +6,8 @@
 namespace CmeApi\Controllers\EmailList;
 
 use CmeApi\AbstractController;
+use CmeData\ListData;
 use CmeKernel\Core\CmeKernel;
-use CmeKernel\Data\ListData;
 use Slim\Http\Request;
 
 class Create extends AbstractController
@@ -19,9 +19,7 @@ class Create extends AbstractController
     $result['request'] = $request->post();
     try
     {
-      $data              = new ListData();
-      $data->name        = $request->post('name');
-      $data->description = $request->post('description');
+      $data = ListData::hydrate($request->post());
       if($data->name)
       {
         $listId = CmeKernel::EmailList()->create($data);

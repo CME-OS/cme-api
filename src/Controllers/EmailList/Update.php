@@ -6,9 +6,8 @@
 namespace CmeApi\Controllers\EmailList;
 
 use CmeApi\AbstractController;
-use CmeKernel\Core\CmeDatabase;
+use CmeData\ListData;
 use CmeKernel\Core\CmeKernel;
-use CmeKernel\Data\ListData;
 use Slim\Http\Request;
 
 class Update extends AbstractController
@@ -24,7 +23,7 @@ class Update extends AbstractController
       /**
        * @var ListData $data
        */
-      $data = CmeDatabase::hydrate(new ListData(), $request->post());
+      $data = ListData::hydrate($request->post());
       if($data->id)
       {
         $result['result'] = CmeKernel::EmailList()->update($data);
