@@ -16,11 +16,15 @@
     }
   ],
   "require":     {
-    "php":               ">=5.4.0",
-    "slim/slim":         "2.*",
-    "symfony/validator": "v2.3.17",
-    "rmccue/requests":   "*",
-    "cme/cme-kernel":    "dev-master"
+    "php":                   ">=5.4.0",
+    "slim/slim":             "2.*",
+    "symfony/validator":     "v2.3.17",
+    "rmccue/requests":       "*",
+    "cme/cme-kernel":        "dev-master",
+    "illuminate/cache":      "4.2.*",
+    "illuminate/database":   "4.2.*",
+    "illuminate/filesystem": "4.2.*",
+    "illuminate/redis":      "4.2.*"
   },
   "autoload":    {
     "files": [

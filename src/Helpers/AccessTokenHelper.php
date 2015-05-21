@@ -5,36 +5,41 @@
 
 namespace CmeApi\Helpers;
 
+use CmeApi\Configs\Config;
+use Illuminate\Cache\CacheManager;
+use Illuminate\Cache\MemcachedConnector;
+use Illuminate\Cache\RedisStore;
+use Illuminate\Cache\StoreInterface;
+use Illuminate\Redis\Database;
+
 class AccessTokenHelper
 {
-  private static $_memcache;
+  private static $_cacheManager;
 
-  public static function cacheToken($deviceId, $token, $expire)
+  public static function cacheToken($clientKey, $token, $expire)
   {
-    $cache = self::memcache();
-    $cache->add(
-      'Token:' . $deviceId,
+    $cache = self::cacheManager();
+    $cache->put(
+      'Token:' . $clientKey,
       $token,
-      MEMCACHE_COMPRESSED,
       $expire
     );
   }
 
   public static function cacheId($token, $id, $expire)
   {
-    $cache = self::memcache();
-    $cache->add(
+    $cache = self::cacheManager();
+    $cache->put(
       'ID:' . $token,
       $id,
-      MEMCACHE_COMPRESSED,
       $expire
     );
   }
 
-  public static function getCachedToken($deviceId)
+  public static function getCachedToken($clientKey)
   {
-    $cache       = self::memcache();
-    $cachedToken = $cache->get('Token:' . $deviceId);
+    $cache       = self::cacheManager();
+    $cachedToken = $cache->get('Token:' . $clientKey);
 
     if($cachedToken)
     {
@@ -46,7 +51,7 @@ class AccessTokenHelper
 
   public static function getID($token)
   {
-    $cache = self::memcache();
+    $cache = self::cacheManager();
     $id    = $cache->get('ID:' . $token);
     if($id)
     {
@@ -56,21 +61,21 @@ class AccessTokenHelper
     return false;
   }
 
-  public static function memcache()
+  /**
+   * @return StoreInterface
+   */
+  public static function cacheManager()
   {
-    if(self::$_memcache == null)
+    if(self::$_cacheManager == null)
     {
-      self::$_memcache = new \Memcache();
-      try
-      {
-        self::$_memcache->connect('localhost', 11211);
-      }
-      catch(\Exception $e)
-      {
-        throw new \Exception("Could not connect to memcache");
-      }
+      $config              = [
+        'config'              => Config::get('cache'),
+        'redis'               => new Database(),
+        'memcached.connector' => new MemcachedConnector()
+      ];
+      self::$_cacheManager = (new CacheManager($config))->driver();
     }
 
-    return self::$_memcache;
+    return self::$_cacheManager;
   }
 }

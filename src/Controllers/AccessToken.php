@@ -63,25 +63,23 @@ class AccessToken extends AbstractController
 
   private function _generateBaseToken()
   {
-
-    $deviceId = $this->_request->post('device_id');
-    $id       = [
-      'deviceId' => $deviceId,
-      'userId'   => $this->_request->post('user_id')
-    ];
-
-    $clientId     = $this->_request->post('client_id'); //same as app id
+    $clientKey    = $this->_request->post('client_key'); //same as app id
     $clientSecret = $this->_request->post('client_secret');
+
+    $id       = [
+      'deviceId' => $clientKey,
+      'userId'   => $clientSecret
+    ];
     //$authCode     = $this->_request->get('auth_code');
     //$grantType    = $this->_request->get('grant_type');
 
     //TODO: some sort of validation based on the auth_code
 
-    $this->_token = AccessTokenHelper::getCachedToken($deviceId);
+    $this->_token = AccessTokenHelper::getCachedToken($clientKey);
     if(!$this->_token)
     {
       $salt = md5(
-        $deviceId . $clientId . $clientSecret . microtime(true)
+        $clientKey . $clientKey . $clientSecret . microtime(true)
       );
 
       $tokenLen = 40;
@@ -108,7 +106,7 @@ class AccessToken extends AbstractController
 
       $expiry = $this->_getExpiryTimeForToken();
       AccessTokenHelper::cacheToken(
-        $deviceId,
+        $clientKey,
         $this->_token,
         $expiry
       );
