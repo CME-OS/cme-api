@@ -29,7 +29,7 @@ class Get extends AbstractController
           "List ID is missing a name. A name is required to create a list"
         );
       }
-      $result['message'] = 'List successfully created.';
+      $result['message'] = 'List successfully retrieved.';
     }
     catch(\Exception $e)
     {
