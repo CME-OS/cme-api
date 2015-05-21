@@ -10,12 +10,12 @@ return [
     'dbname'   => 'cme'
   ],
   'cache' => [
-    'cache.driver' => 'memcached',
     //Supported: "file", "database", "apc", "memcached", "redis", "array"
-    'cache.path'   => '',
+    'cache.driver' => 'memcached',
     //only set this if cache.driver is set to file
+    'cache.path'   => '',
     'cache.prefix' => 'cme',
-    'memcached'    => [
+    'cache.memcached'    => [
       ['host' => 'localhost', 'port' => 11211, 'weight' => 100],
     ],
     'redis'        => [
