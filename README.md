@@ -12,7 +12,7 @@ This is API for your CME (Campaigns Made Easy) instance
 - Apache
 
 ### Available Endpoints
-The following endpoints are available. More details docs to come soon
+The following endpoints are available. More detailed docs to come soon
 - oauth/authorize
 - oauth/access_token
 - list/all
