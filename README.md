@@ -6,6 +6,11 @@ This is API for your CME (Campaigns Made Easy) instance
 - Clone down repo and copy to your Web Server
 - Configure it by creating a config.php file, use config.example.php to know how
 
+### Requirements
+- PHP >=5.40
+- Memcache
+- Apache
+
 ### Available Endpoints
 The following endpoints are available. More details docs to come soon
 - oauth/authorize
