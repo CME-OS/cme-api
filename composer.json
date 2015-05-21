@@ -18,10 +18,8 @@
   "require":     {
     "php":               ">=5.4.0",
     "slim/slim":         "2.*",
-    "lusitanian/oauth":  "v0.3.0",
     "symfony/validator": "v2.3.17",
     "rmccue/requests":   "*",
-    "nette/mail":        "2.2.1",
     "cme/cme-kernel":    "dev-master"
   },
   "autoload":    {
