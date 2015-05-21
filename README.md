@@ -32,7 +32,7 @@ The following endpoints are available. More details docs to come soon
 - brand/exists
 - brand/create
 - brand/update
-  - brand/delete
+- brand/delete
 
 ### Contributing
 If you find a bug or want to improve the code in any way, please submit a pull request
