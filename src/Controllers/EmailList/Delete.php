@@ -18,7 +18,7 @@ class Delete extends AbstractController
     $result['request'] = $request->post();
     try
     {
-      $listId = $request->post('list_id');
+      $listId = $request->post('id');
       if($listId)
       {
         $result['result'] = CmeKernel::EmailList()->delete($listId);
