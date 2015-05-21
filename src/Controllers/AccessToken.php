@@ -17,8 +17,8 @@ class AccessToken extends AbstractController
    */
   private $_request;
 
-  //Time to live in seconds
-  private $_ttl = 3600;
+  //Time to live in minutes
+  private $_expires = 60;
 
   private $_token;
 
@@ -38,7 +38,7 @@ class AccessToken extends AbstractController
         'error'         => $this->_getErrors(),
         'access_token'  => $this->_generateAccessToken(),
         'refresh_token' => $this->_generateBaseToken(),
-        'expires'       => $this->_ttl,
+        'expiry_time'       => $this->_getExpiryTimeForToken(),
         'extra'         => '',
       ];
     }
@@ -66,7 +66,7 @@ class AccessToken extends AbstractController
     $clientKey    = $this->_request->post('client_key'); //same as app id
     $clientSecret = $this->_request->post('client_secret');
 
-    $id       = [
+    $id = [
       'deviceId' => $clientKey,
       'userId'   => $clientSecret
     ];
@@ -104,17 +104,16 @@ class AccessToken extends AbstractController
 
       $this->_token = substr(hash('sha512', $randomData . $salt), 0, $tokenLen);
 
-      $expiry = $this->_getExpiryTimeForToken();
       AccessTokenHelper::cacheToken(
         $clientKey,
         $this->_token,
-        $expiry
+        $this->_expires
       );
 
       AccessTokenHelper::cacheId(
         $this->_token,
         $id,
-        $expiry
+        $this->_expires
       );
     }
     return $this->_token;
@@ -122,7 +121,7 @@ class AccessToken extends AbstractController
 
   private function _getExpiryTimeForToken()
   {
-    return time() + $this->_ttl;
+    return date('Y-m-d H:i:s', strtotime('+ ' . $this->_expires . ' minutes'));
   }
 
 
