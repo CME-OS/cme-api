@@ -9,32 +9,27 @@ use CmeApi\AbstractController;
 use CmeKernel\Core\CmeKernel;
 use Slim\Http\Request;
 
-class DeleteSubscriber extends AbstractController
+class Exists extends AbstractController
 {
-
   public function _process(Request $request)
   {
     $result['status']  = 'success';
-    $result['result']    = null;
+    $result['result']  = null;
     $result['request'] = $request->post();
     try
     {
-      $listId       = $request->post('id');
-      $subscriberId = $request->post('subscriber_id');
+      $listId = $request->post('id');
       if($listId)
       {
-        $result['result'] = CmeKernel::EmailList()->deleteSubscriber(
-          $subscriberId,
-          $listId
-        );
+        $result['result'] = CmeKernel::EmailList()->exists($listId);
       }
       else
       {
         throw new \Exception(
-          "List ID is missing. An id is required to delete a subscriber from a list"
+          "List ID is missing a name. A name is required to check if it exists"
         );
       }
-      $result['message'] = 'Subscriber successfully deleted.';
+      $result['message'] = 'List exists.';
     }
     catch(\Exception $e)
     {
@@ -43,5 +38,10 @@ class DeleteSubscriber extends AbstractController
     }
 
     return $result;
+  }
+
+  public function requiresAccessToken()
+  {
+    return false;
   }
 }

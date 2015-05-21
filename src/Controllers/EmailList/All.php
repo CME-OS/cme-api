@@ -9,25 +9,21 @@ use CmeApi\AbstractController;
 use CmeKernel\Core\CmeKernel;
 use Slim\Http\Request;
 
-class Delete extends AbstractController
+class All extends AbstractController
 {
+
   public function _process(Request $request)
   {
     $result['status']  = 'success';
-    $result['result']    = null;
+    $result['result']  = null;
     $result['request'] = $request->post();
     try
     {
-      $listId = $request->post('list_id');
-      if($listId)
-      {
-        $result['result'] = CmeKernel::EmailList()->delete($listId);
-        $result['message'] = 'List successfully deleted.';
-      }
-      else
-      {
-        throw new \Exception("list_id must be specified");
-      }
+      $includeDeleted          = $request->post('include_deleted');
+      $result['data']['lists'] = CmeKernel::EmailList()->all(
+        $includeDeleted
+      );
+      $result['message']       = 'All lists returned.';
     }
     catch(\Exception $e)
     {

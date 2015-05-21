@@ -15,7 +15,7 @@ class GetSubscriber extends AbstractController
   public function _process(Request $request)
   {
     $result['status']  = 'success';
-    $result['data']    = null;
+    $result['result']    = null;
     $result['request'] = $request->post();
     try
     {
@@ -23,7 +23,7 @@ class GetSubscriber extends AbstractController
       $subscriberId = $request->post('subscriber_id');
       if($listId)
       {
-        $result['data']['subscriber'] = CmeKernel::EmailList()->getSubscriber(
+        $result['result']['subscriber'] = CmeKernel::EmailList()->getSubscriber(
           $subscriberId,
           $listId
         );

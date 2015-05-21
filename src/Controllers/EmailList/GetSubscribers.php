@@ -15,7 +15,7 @@ class GetSubscribers extends AbstractController
   public function _process(Request $request)
   {
     $result['status']  = 'success';
-    $result['data']    = null;
+    $result['result']    = null;
     $result['request'] = $request->post();
     try
     {
@@ -24,7 +24,7 @@ class GetSubscribers extends AbstractController
       $limit  = $request->post('limit', 1000);
       if($listId)
       {
-        $result['data']['subscribers'] = CmeKernel::EmailList()->getSubscribers(
+        $result['result']['subscribers'] = CmeKernel::EmailList()->getSubscribers(
           $listId,
           $offset,
           $limit

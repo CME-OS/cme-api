@@ -17,7 +17,7 @@ class Update extends AbstractController
   public function _process(Request $request)
   {
     $result['status']  = 'success';
-    $result['data']    = null;
+    $result['result']    = null;
     $result['request'] = $request->post();
     try
     {
@@ -27,7 +27,7 @@ class Update extends AbstractController
       $data = CmeDatabase::hydrate(new ListData(), $request->post());
       if($data->id)
       {
-        CmeKernel::EmailList()->update($data);
+        $result['result'] = CmeKernel::EmailList()->update($data);
       }
       else
       {

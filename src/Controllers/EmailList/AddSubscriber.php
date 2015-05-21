@@ -17,7 +17,7 @@ class AddSubscriber extends AbstractController
   public function _process(Request $request)
   {
     $result['status']  = 'success';
-    $result['data']    = null;
+    $result['result']  = null;
     $result['request'] = $request->post();
     try
     {
@@ -34,7 +34,10 @@ class AddSubscriber extends AbstractController
       $data = CmeDatabase::hydrate(new SubscriberData(), $post, false);
       if($listId)
       {
-        CmeKernel::EmailList()->addSubscriber($data, $listId);
+        $result['result'] = CmeKernel::EmailList()->addSubscriber(
+          $data,
+          $listId
+        );
       }
       else
       {

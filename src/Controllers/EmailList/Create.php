@@ -15,7 +15,7 @@ class Create extends AbstractController
   public function _process(Request $request)
   {
     $result['status']  = 'success';
-    $result['data']    = null;
+    $result['result']    = null;
     $result['request'] = $request->post();
     try
     {
@@ -33,7 +33,7 @@ class Create extends AbstractController
         );
       }
 
-      $result['data']    = ['listId' => $listId];
+      $result['result']    = ['listId' => $listId];
       $result['message'] = 'List successfully created.';
     }
     catch(\Exception $e)

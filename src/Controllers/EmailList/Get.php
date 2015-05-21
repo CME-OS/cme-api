@@ -14,14 +14,14 @@ class Get extends AbstractController
   public function _process(Request $request)
   {
     $result['status']  = 'success';
-    $result['data']    = null;
+    $result['result']  = null;
     $result['request'] = $request->post();
     try
     {
       $listId = $request->post('id');
       if($listId)
       {
-        $result['data']['list'] = CmeKernel::EmailList()->get($listId);
+        $result['result']['list'] = CmeKernel::EmailList()->get($listId);
       }
       else
       {
@@ -38,5 +38,10 @@ class Get extends AbstractController
     }
 
     return $result;
+  }
+
+  public function requiresAccessToken()
+  {
+    return false;
   }
 }
