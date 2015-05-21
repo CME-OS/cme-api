@@ -23,7 +23,7 @@ if($app->request->isPost())
       function () use ($app, $apiCall)
       {
         //initial CME Kernel
-        $initData             = new \CmeKernel\Data\InitData();
+        $initData             = new \CmeData\InitData();
         $initData->dbName     = Config::get('db', 'dbname');
         $initData->dbUsername = Config::get('db', 'user');
         $initData->dbPassword = Config::get('db', 'password');
