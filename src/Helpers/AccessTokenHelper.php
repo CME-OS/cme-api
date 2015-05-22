@@ -70,7 +70,7 @@ class AccessTokenHelper
     {
       $config              = [
         'config'              => Config::get('cache'),
-        'redis'               => new Database(),
+        'redis'               => new Database(Config::get('cache', 'redis')),
         'memcached.connector' => new MemcachedConnector()
       ];
       self::$_cacheManager = (new CacheManager($config))->driver();
