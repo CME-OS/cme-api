@@ -67,6 +67,6 @@ abstract class AbstractController implements IController
 
   public function requiresAccessToken()
   {
-    return false;
+    return true;
   }
 }
