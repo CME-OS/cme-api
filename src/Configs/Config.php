@@ -52,6 +52,7 @@ class Config
         'brand/update'              => 'CmeApi\\Controllers\\Brand\\Update',
         'brand/delete'              => 'CmeApi\\Controllers\\Brand\\Delete',
         'analytics/campaign_events' => 'CmeApi\\Controllers\\Analytics\\GetLastEvents',
+        'analytics/create'          => 'CmeApi\\Controllers\\Analytics\\Create',
       ]
     ];
 
