@@ -19,7 +19,7 @@ class All extends AbstractController
     try
     {
       $includeDeleted           = $request->post('include_deleted');
-      $result['data']['brands'] = CmeKernel::Brand()->all(
+      $result['result']['brands'] = CmeKernel::Brand()->all(
         $includeDeleted
       );
       $result['message']        = 'All campaigns returned.';

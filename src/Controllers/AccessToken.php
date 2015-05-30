@@ -25,7 +25,7 @@ class AccessToken extends AbstractController
   protected function _process(Request $request)
   {
     $result['status']  = 'success';
-    $result['data']    = null;
+    $result['result']    = null;
     $this->_request    = $request;
     $validApi          = CmeKernel::ApiClient()->validate(
       $request->post('client_key'),
@@ -34,7 +34,7 @@ class AccessToken extends AbstractController
     $result['request'] = $request->post();
     if($validApi)
     {
-      $result['data']['oauth'] = [
+      $result['result']['oauth'] = [
         'error'         => $this->_getErrors(),
         'access_token'  => $this->_generateAccessToken(),
         'refresh_token' => $this->_generateBaseToken(),

@@ -20,7 +20,7 @@ class All extends AbstractController
     try
     {
       $includeDeleted          = $request->post('include_deleted');
-      $result['data']['lists'] = CmeKernel::EmailList()->all(
+      $result['result']['lists'] = CmeKernel::EmailList()->all(
         $includeDeleted
       );
       $result['message']       = 'All lists returned.';

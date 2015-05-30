@@ -21,7 +21,7 @@ class GetLastEvents extends AbstractController
     try
     {
       $eventType                   = $request->post('event_type');
-      $result['data']['campaigns'] = CmeKernel::Analytics()->getLastXOfEvent(
+      $result['result']['campaigns'] = CmeKernel::Analytics()->getLastXOfEvent(
         EventType::fromValue($eventType),
         $request->post('campaign_id')
       );
