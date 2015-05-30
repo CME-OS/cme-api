@@ -24,7 +24,8 @@
     "illuminate/cache":      "4.2.*",
     "illuminate/database":   "4.2.*",
     "illuminate/filesystem": "4.2.*",
-    "illuminate/redis":      "4.2.*"
+    "illuminate/redis":      "4.2.*",
+    "patchwork/utf8":        "1.2.2"
   },
   "autoload":    {
     "files": [
