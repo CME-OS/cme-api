@@ -22,7 +22,7 @@ class Create extends AbstractController
       $data = CampaignEventData::hydrate($request->post());
       if($data->eventType)
       {
-        $eventId = CmeKernel::Campaign()->create($data);
+        $eventId = CmeKernel::CampaignEvent()->create($data);
       }
       else
       {
