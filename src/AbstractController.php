@@ -39,6 +39,7 @@ abstract class AbstractController implements IController
     else
     {
       $result['status'] = 'fail';
+      $status['error_code'] = 419;
       $result['error']  = "Invalid access token. Try requesting a new token";
     }
     $response = new Response();
