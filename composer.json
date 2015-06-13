@@ -18,7 +18,6 @@
   "require":     {
     "php":                   ">=5.4.0",
     "slim/slim":             "2.*",
-    "symfony/validator":     "v2.3.17",
     "rmccue/requests":       "*",
     "cme/cme-kernel":        "dev-master",
     "cme/cme-data":          "@dev",
