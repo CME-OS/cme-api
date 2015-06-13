@@ -20,7 +20,7 @@
     "slim/slim":             "2.*",
     "rmccue/requests":       "*",
     "cme/cme-kernel":        "dev-master",
-    "cme/cme-data":          "@dev",
+    "cme/cme-data":          "dev-master",
     "illuminate/cache":      "4.2.*",
     "illuminate/database":   "4.2.*",
     "illuminate/filesystem": "4.2.*",
